@@ -1,5 +1,7 @@
 package com.codecool.embroidery;
 
+import com.codecool.embroidery.consoleColors.ConsoleColors;
+
 public class Embroidery {
     public static void main(String[] args) {
         printShape(drawRectangle(5, 5));
@@ -41,7 +43,7 @@ public class Embroidery {
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor) {
-        return drawRectangle(width,height,borderColor,1);
+        return drawRectangle(width, height, borderColor, 1);
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor, int fillColor) {
@@ -69,7 +71,7 @@ public class Embroidery {
 
 
     private static int[][] drawTriangle(int height, int borderColor) {
-        return drawTriangle(height,borderColor,1);
+        return drawTriangle(height, borderColor, 1);
     }
 
     private static int[][] drawTriangle(int height, int borderColor, int fillColor) {
@@ -97,6 +99,7 @@ public class Embroidery {
     private static int[][] drawChristmasTree(int blocks, int borderColor) {
         return drawChristmasTree(blocks, borderColor, 1);
     }
+
     private static int[][] drawChristmasTree(int blocks, int borderColor, int fillColor) {
         final int heightOfBlocks = 3;
         final int height = blocks * heightOfBlocks;
@@ -149,8 +152,43 @@ public class Embroidery {
     }
 
     private static void printShape(int[][] shape) {
+        String color;
         for (int i = 0; i < shape.length; i++) {
             for (int j = 0; j < shape[0].length; j++) {
+                switch (shape[i][j]) {
+                    case 0:
+                        color = ConsoleColors.BLACK_BACKGROUND_BRIGHT;
+                        break;
+                    case 1:
+                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
+                        break;
+                    case 2:
+                        color = ConsoleColors.;
+                        break;
+                    case 3:
+                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
+                        break;
+                    case 4:
+                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
+                        break;
+                    case 5:
+                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
+                        break;
+                    case 6:
+                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
+                        break;
+                    case 7:
+                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
+                        break;
+                    case 8:
+                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
+                        break;
+                    case 9:
+                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
+                        break;
+                    default:
+                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
+                }
                 System.out.print(shape[i][j] + "  ");
             }
             System.out.println();
