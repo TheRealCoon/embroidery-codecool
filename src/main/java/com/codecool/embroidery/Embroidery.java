@@ -2,11 +2,21 @@ package com.codecool.embroidery;
 
 public class Embroidery {
     public static void main(String[] args) {
-
+        printShape(drawRectangle(5,5));
+//        printShape(drawRectangle());
+//        printShape(drawRectangle());
+//        printShape(drawRectangle());
     }
 
     private static int[][] drawRectangle(int width, int height) {
-        return new int[0][0];
+        int[][] rectangle = new int[height][width];
+        final int fillColor = 1;
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                rectangle[i][j] = fillColor;
+            }
+        }
+        return rectangle;
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor) {
@@ -60,7 +70,7 @@ public class Embroidery {
     private static void printShape(int[][] shape) {
         for (int i = 0; i < shape.length; i++) {
             for (int j = 0; j < shape[0].length; j++) {
-                System.out.print(shape[i][j]);
+                System.out.print(shape[i][j] + "  ");
             }
             System.out.println();
         }
