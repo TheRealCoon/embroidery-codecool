@@ -30,6 +30,8 @@ public class Embroidery {
         System.out.println();
         printShape(drawCircle(16));
         System.out.println();
+        printShape(drawCircle(16, 8));
+        System.out.println();
     }
 
     private static int[][] drawRectangle(int width, int height) {
@@ -210,6 +212,7 @@ public class Embroidery {
 
     private static int[][] drawCircle(int radius) {
         final int fillColor = 1;
+        final int empty = 0;
         final int height = 2 * radius;
         final double zeroPoint = radius - ((radius % 2 == 0) ? 0.5 : 1);
         int[][] circle = new int[height][height];
@@ -217,6 +220,8 @@ public class Embroidery {
             for (int j = 0; j < height; j++) {
                 if (Math.pow(i - zeroPoint, 2) + Math.pow(j - zeroPoint, 2) <= Math.pow(radius, 2)) {
                     circle[i][j] = fillColor;
+                } else {
+                    circle[i][j] = empty;
                 }
             }
         }
@@ -224,7 +229,26 @@ public class Embroidery {
     }
 
     private static int[][] drawCircle(int radius, int borderColor) {
-        return new int[0][0];
+        final int fillColor = 1;
+        final int empty = 0;
+        final int height = 2 * radius;
+        final double zeroPoint = radius - ((radius % 2 == 0) ? 0.5 : 1);
+        int[][] circle = new int[height][height];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < height; j++) {
+                double aSquarePlusBSquare = Math.pow(i - zeroPoint, 2) + Math.pow(j - zeroPoint, 2);
+                if (Math.floor(aSquarePlusBSquare) <= Math.floor(Math.pow(zeroPoint, 2)) + zeroPoint &&
+                    Math.floor(aSquarePlusBSquare) >= Math.floor(Math.pow(zeroPoint, 2)) - zeroPoint)
+                {
+                    circle[i][j] = borderColor;
+                } else if (aSquarePlusBSquare < Math.pow(radius, 2)) {
+                    circle[i][j] = fillColor;
+                } else {
+                    circle[i][j] = empty;
+                }
+            }
+        }
+        return circle;
     }
 
     private static int[][] drawCircle(int radius, int borderColor, int fillColor) {
