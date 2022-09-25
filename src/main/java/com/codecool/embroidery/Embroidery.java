@@ -4,11 +4,11 @@ public class Embroidery {
     public static void main(String[] args) {
         printShape(drawRectangle(5, 5));
         System.out.println();
-        printShape(drawRectangle(5,5,3));
+        printShape(drawRectangle(5, 5, 3));
         System.out.println();
-        printShape(drawRectangle(5,5,3,8));
+        printShape(drawRectangle(5, 5, 3, 8));
         System.out.println();
-//        printShape(drawRectangle());
+        printShape(drawRectangle(7,7,8,2,2));
         System.out.println();
     }
 
@@ -53,7 +53,18 @@ public class Embroidery {
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor, int fillColor, int borderWidth) {
-        return new int[0][0];
+        int[][] rectangle = new int[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (i < borderWidth || j < borderWidth ||
+                   i >= height - borderWidth ||  j >= width - borderWidth) {
+                    rectangle[i][j] = borderColor;
+                } else {
+                    rectangle[i][j] = fillColor;
+                }
+            }
+        }
+        return rectangle;
     }
 
     private static int[][] drawTriangle(int height) {
