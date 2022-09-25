@@ -37,43 +37,15 @@ public class Embroidery {
     }
 
     private static int[][] drawRectangle(int width, int height) {
-        int[][] rectangle = new int[height][width];
-        final int fillColor = 1;
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                rectangle[i][j] = fillColor;
-            }
-        }
-        return rectangle;
+        return drawRectangle(width, height, 1);
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor) {
-        int[][] rectangle = new int[height][width];
-        final int fillColor = 1;
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (i == 0 || j == 0 || i == height - 1 || j == width - 1) {
-                    rectangle[i][j] = borderColor;
-                } else {
-                    rectangle[i][j] = fillColor;
-                }
-            }
-        }
-        return rectangle;
+        return drawRectangle(width,height,borderColor,1);
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor, int fillColor) {
-        int[][] rectangle = new int[height][width];
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (i == 0 || j == 0 || i == height - 1 || j == width - 1) {
-                    rectangle[i][j] = borderColor;
-                } else {
-                    rectangle[i][j] = fillColor;
-                }
-            }
-        }
-        return rectangle;
+        return drawRectangle(width, height, borderColor, fillColor, 1);
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor, int fillColor, int borderWidth) {
