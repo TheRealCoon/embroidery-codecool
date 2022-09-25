@@ -28,7 +28,7 @@ public class Embroidery {
         System.out.println();
         printShape(drawChristmasTree(4, 2));
         System.out.println();
-        printShape(drawChristmasTree(4, 2, 8));
+        printShape(drawChristmasTree(4, 4, 5));
         System.out.println();
         printShape(drawCircle(16));
         System.out.println();
