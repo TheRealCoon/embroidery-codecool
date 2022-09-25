@@ -64,40 +64,12 @@ public class Embroidery {
     }
 
     private static int[][] drawTriangle(int height) {
-        final int width = height * 2 - 1;
-        final int empty = 0;
-        final int fillColor = 1;
-        int[][] triangle = new int[height][width];
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (j >= height - 1 - i && j <= height - 1 + i) {
-                    triangle[i][j] = fillColor;
-                } else {
-                    triangle[i][j] = empty;
-                }
-            }
-        }
-        return triangle;
+        return drawTriangle(height, 1);
     }
 
 
     private static int[][] drawTriangle(int height, int borderColor) {
-        final int width = height * 2 - 1;
-        final int empty = 0;
-        final int fillColor = 1;
-        int[][] triangle = new int[height][width];
-        for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                if (j == height - 1 - i || j == height - 1 + i || i == height - 1) {
-                    triangle[i][j] = borderColor;
-                } else if (j > height - 1 - i && j < height - 1 + i) {
-                    triangle[i][j] = fillColor;
-                } else {
-                    triangle[i][j] = empty;
-                }
-            }
-        }
-        return triangle;
+        return drawTriangle(height,borderColor,1);
     }
 
     private static int[][] drawTriangle(int height, int borderColor, int fillColor) {
@@ -119,49 +91,12 @@ public class Embroidery {
     }
 
     private static int[][] drawChristmasTree(int blocks) {
-        final int heightOfBlocks = 3;
-        final int height = blocks * heightOfBlocks;
-        final int width = heightOfBlocks + blocks * 2;
-        final int empty = 0;
-        final int fillColor = 1;
-        int[][] christmasTree = new int[height][width];
-        for (int i = 0; i < blocks; i++) {
-            for (int j = 0; j < heightOfBlocks; j++) {
-                for (int k = 0; k < width; k++) {
-                    if (k >= width / 2 - j - i && k <= width / 2 + j + i) {
-                        christmasTree[i * 3 + j][k] = fillColor;
-                    } else {
-                        christmasTree[i * 3 + j][k] = empty;
-                    }
-                }
-            }
-        }
-        return christmasTree;
+        return drawChristmasTree(blocks, 1);
     }
 
     private static int[][] drawChristmasTree(int blocks, int borderColor) {
-        final int heightOfBlocks = 3;
-        final int height = blocks * heightOfBlocks;
-        final int width = heightOfBlocks + blocks * 2;
-        final int empty = 0;
-        final int fillColor = 1;
-        int[][] christmasTree = new int[height][width];
-        for (int i = 0; i < blocks; i++) {
-            for (int j = 0; j < heightOfBlocks; j++) {
-                for (int k = 0; k < width; k++) {
-                    if (k == width / 2 - j - i || k == width / 2 + j + i || (i + 1) * (j + 1) == height) {
-                        christmasTree[i * heightOfBlocks + j][k] = borderColor;
-                    } else if (k >= width / 2 - j - i && k <= width / 2 + j + i) {
-                        christmasTree[i * heightOfBlocks + j][k] = fillColor;
-                    } else {
-                        christmasTree[i * heightOfBlocks + j][k] = empty;
-                    }
-                }
-            }
-        }
-        return christmasTree;
+        return drawChristmasTree(blocks, borderColor, 1);
     }
-
     private static int[][] drawChristmasTree(int blocks, int borderColor, int fillColor) {
         final int heightOfBlocks = 3;
         final int height = blocks * heightOfBlocks;
