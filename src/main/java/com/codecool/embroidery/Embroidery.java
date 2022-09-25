@@ -26,6 +26,8 @@ public class Embroidery {
         System.out.println();
         printShape(drawChristmasTree(4, 2));
         System.out.println();
+        printShape(drawChristmasTree(4, 2, 8));
+        System.out.println();
     }
 
     private static int[][] drawRectangle(int width, int height) {
@@ -183,7 +185,25 @@ public class Embroidery {
     }
 
     private static int[][] drawChristmasTree(int blocks, int borderColor, int fillColor) {
-        return new int[0][0];
+        final int heightOfBlocks = 3;
+        final int height = blocks * heightOfBlocks;
+        final int width = heightOfBlocks + blocks * 2;
+        final int empty = 0;
+        int[][] christmasTree = new int[height][width];
+        for (int i = 0; i < blocks; i++) {
+            for (int j = 0; j < heightOfBlocks; j++) {
+                for (int k = 0; k < width; k++) {
+                    if (k == width / 2 - j - i || k == width / 2 + j + i || (i + 1) * (j + 1) == height) {
+                        christmasTree[i * heightOfBlocks + j][k] = borderColor;
+                    }else if (k >= width / 2 - j - i && k <= width / 2 + j + i) {
+                        christmasTree[i * heightOfBlocks + j][k] = fillColor;
+                    } else {
+                        christmasTree[i * heightOfBlocks + j][k] = empty;
+                    }
+                }
+            }
+        }
+        return christmasTree;
     }
 
     private static int[][] drawCircle(int radius) {
