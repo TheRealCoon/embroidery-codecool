@@ -14,6 +14,8 @@ public class Embroidery {
         System.out.println();
         printShape(drawTriangle(4, 2));
         System.out.println();
+        printShape(drawTriangle(4, 2,6));
+        System.out.println();
     }
 
     private static int[][] drawRectangle(int width, int height) {
@@ -109,7 +111,21 @@ public class Embroidery {
     }
 
     private static int[][] drawTriangle(int height, int borderColor, int fillColor) {
-        return new int[0][0];
+        final int width = height * 2 - 1;
+        final int empty = 0;
+        int[][] triangle = new int[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (j == height - 1 - i || j == height - 1 + i || i == height - 1) {
+                    triangle[i][j] = borderColor;
+                } else if (j > height - 1 - i && j < height - 1 + i) {
+                    triangle[i][j] = fillColor;
+                } else {
+                    triangle[i][j] = empty;
+                }
+            }
+        }
+        return triangle;
     }
 
     private static int[][] drawChristmasTree(int blocks) {
