@@ -5,8 +5,11 @@ public class Embroidery {
         printShape(drawRectangle(5, 5));
         System.out.println();
         printShape(drawRectangle(5,5,3));
+        System.out.println();
+        printShape(drawRectangle(5,5,3,8));
+        System.out.println();
 //        printShape(drawRectangle());
-//        printShape(drawRectangle());
+        System.out.println();
     }
 
     private static int[][] drawRectangle(int width, int height) {
@@ -36,7 +39,17 @@ public class Embroidery {
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor, int fillColor) {
-        return new int[0][0];
+        int[][] rectangle = new int[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (i == 0 || j == 0 || i == height - 1 || j == width - 1) {
+                    rectangle[i][j] = borderColor;
+                } else {
+                    rectangle[i][j] = fillColor;
+                }
+            }
+        }
+        return rectangle;
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor, int fillColor, int borderWidth) {
