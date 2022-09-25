@@ -8,7 +8,9 @@ public class Embroidery {
         System.out.println();
         printShape(drawRectangle(5, 5, 3, 8));
         System.out.println();
-        printShape(drawRectangle(7,7,8,2,2));
+        printShape(drawRectangle(7, 7, 8, 2, 2));
+        System.out.println();
+        printShape(drawTriangle(4));
         System.out.println();
     }
 
@@ -57,7 +59,7 @@ public class Embroidery {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
                 if (i < borderWidth || j < borderWidth ||
-                   i >= height - borderWidth ||  j >= width - borderWidth) {
+                    i >= height - borderWidth || j >= width - borderWidth) {
                     rectangle[i][j] = borderColor;
                 } else {
                     rectangle[i][j] = fillColor;
@@ -68,8 +70,22 @@ public class Embroidery {
     }
 
     private static int[][] drawTriangle(int height) {
-        return new int[0][0];
+        final int width = height * 2 - 1;
+        final int empty = 0;
+        final int fillColor = 1;
+        int[][] triangle = new int[height][width];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (j >= height - 1 - i && j <= height - 1 + i) {
+                    triangle[i][j] = fillColor;
+                } else {
+                    triangle[i][j] = empty;
+                }
+            }
+        }
+        return triangle;
     }
+
 
     private static int[][] drawTriangle(int height, int borderColor) {
         return new int[0][0];
