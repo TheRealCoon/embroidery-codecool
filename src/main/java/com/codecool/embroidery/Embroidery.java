@@ -28,6 +28,8 @@ public class Embroidery {
         System.out.println();
         printShape(drawChristmasTree(4, 2, 8));
         System.out.println();
+        printShape(drawCircle(16));
+        System.out.println();
     }
 
     private static int[][] drawRectangle(int width, int height) {
@@ -173,7 +175,7 @@ public class Embroidery {
                 for (int k = 0; k < width; k++) {
                     if (k == width / 2 - j - i || k == width / 2 + j + i || (i + 1) * (j + 1) == height) {
                         christmasTree[i * heightOfBlocks + j][k] = borderColor;
-                    }else if (k >= width / 2 - j - i && k <= width / 2 + j + i) {
+                    } else if (k >= width / 2 - j - i && k <= width / 2 + j + i) {
                         christmasTree[i * heightOfBlocks + j][k] = fillColor;
                     } else {
                         christmasTree[i * heightOfBlocks + j][k] = empty;
@@ -195,7 +197,7 @@ public class Embroidery {
                 for (int k = 0; k < width; k++) {
                     if (k == width / 2 - j - i || k == width / 2 + j + i || (i + 1) * (j + 1) == height) {
                         christmasTree[i * heightOfBlocks + j][k] = borderColor;
-                    }else if (k >= width / 2 - j - i && k <= width / 2 + j + i) {
+                    } else if (k >= width / 2 - j - i && k <= width / 2 + j + i) {
                         christmasTree[i * heightOfBlocks + j][k] = fillColor;
                     } else {
                         christmasTree[i * heightOfBlocks + j][k] = empty;
@@ -207,7 +209,18 @@ public class Embroidery {
     }
 
     private static int[][] drawCircle(int radius) {
-        return new int[0][0];
+        final int fillColor = 1;
+        final int height = 2 * radius;
+        final double zeroPoint = radius - ((radius % 2 == 0) ? 0.5 : 1);
+        int[][] circle = new int[height][height];
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < height; j++) {
+                if (Math.pow(i - zeroPoint, 2) + Math.pow(j - zeroPoint, 2) <= Math.pow(radius, 2)) {
+                    circle[i][j] = fillColor;
+                }
+            }
+        }
+        return circle;
     }
 
     private static int[][] drawCircle(int radius, int borderColor) {
