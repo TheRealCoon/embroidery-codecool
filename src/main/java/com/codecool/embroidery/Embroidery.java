@@ -2,8 +2,9 @@ package com.codecool.embroidery;
 
 public class Embroidery {
     public static void main(String[] args) {
-        printShape(drawRectangle(5,5));
-//        printShape(drawRectangle());
+        printShape(drawRectangle(5, 5));
+        System.out.println();
+        printShape(drawRectangle(5,5,3));
 //        printShape(drawRectangle());
 //        printShape(drawRectangle());
     }
@@ -20,7 +21,18 @@ public class Embroidery {
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor) {
-        return new int[0][0];
+        int[][] rectangle = new int[height][width];
+        final int fillColor = 1;
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                if (i == 0 || j == 0 || i == height - 1 || j == width - 1) {
+                    rectangle[i][j] = borderColor;
+                } else {
+                    rectangle[i][j] = fillColor;
+                }
+            }
+        }
+        return rectangle;
     }
 
     private static int[][] drawRectangle(int width, int height, int borderColor, int fillColor) {
