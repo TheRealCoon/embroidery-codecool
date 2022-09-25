@@ -54,8 +54,7 @@ public class Embroidery {
         int[][] rectangle = new int[height][width];
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
-                if (i < borderWidth || j < borderWidth ||
-                    i >= height - borderWidth || j >= width - borderWidth) {
+                if (i < borderWidth || j < borderWidth || i >= height - borderWidth || j >= width - borderWidth) {
                     rectangle[i][j] = borderColor;
                 } else {
                     rectangle[i][j] = fillColor;
@@ -68,7 +67,6 @@ public class Embroidery {
     private static int[][] drawTriangle(int height) {
         return drawTriangle(height, 1);
     }
-
 
     private static int[][] drawTriangle(int height, int borderColor) {
         return drawTriangle(height, borderColor, 1);
@@ -138,8 +136,7 @@ public class Embroidery {
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < height; j++) {
                 double aSquarePlusBSquare = Math.pow(i - zeroPoint, 2) + Math.pow(j - zeroPoint, 2);
-                if (aSquarePlusBSquare <= Math.pow(zeroPoint, 2) + zeroPoint &&
-                    aSquarePlusBSquare >= Math.pow(zeroPoint, 2) - zeroPoint) {
+                if (aSquarePlusBSquare <= Math.pow(zeroPoint, 2) + zeroPoint && aSquarePlusBSquare >= Math.pow(zeroPoint, 2) - zeroPoint) {
                     circle[i][j] = borderColor;
                 } else if (aSquarePlusBSquare < Math.pow(zeroPoint, 2)) {
                     circle[i][j] = fillColor;
@@ -155,43 +152,49 @@ public class Embroidery {
         String color;
         for (int i = 0; i < shape.length; i++) {
             for (int j = 0; j < shape[0].length; j++) {
-                switch (shape[i][j]) {
-                    case 0:
-                        color = ConsoleColors.BLACK_BACKGROUND_BRIGHT;
-                        break;
-                    case 1:
-                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
-                        break;
-                    case 2:
-                        color = ConsoleColors.;
-                        break;
-                    case 3:
-                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
-                        break;
-                    case 4:
-                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
-                        break;
-                    case 5:
-                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
-                        break;
-                    case 6:
-                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
-                        break;
-                    case 7:
-                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
-                        break;
-                    case 8:
-                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
-                        break;
-                    case 9:
-                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
-                        break;
-                    default:
-                        color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
-                }
-                System.out.print(shape[i][j] + "  ");
+                color = setColor(shape[i][j]);
+                System.out.print(ConsoleColors.setBackGroundColor("   ", color));
             }
             System.out.println();
         }
+    }
+
+    private static String setColor(int number) {
+        String color;
+        switch (number) {
+            case 0:
+                color = ConsoleColors.BLACK_BACKGROUND_BRIGHT;
+                break;
+            case 1:
+                color = ConsoleColors.WHITE_BACKGROUND_BRIGHT;
+                break;
+            case 2:
+                color = ConsoleColors.RED_BACKGROUND_BRIGHT;
+                break;
+            case 3:
+                color = ConsoleColors.YELLOW_BACKGROUND_BRIGHT;
+                break;
+            case 4:
+                color = ConsoleColors.CYAN_BACKGROUND_BRIGHT;
+                break;
+            case 5:
+                color = ConsoleColors.GREEN_BACKGROUND_BRIGHT;
+                break;
+            case 6:
+                color = ConsoleColors.BLUE_BACKGROUND_BRIGHT;
+                break;
+            case 7:
+                color = ConsoleColors.PURPLE_BACKGROUND;
+                break;
+            case 8:
+                color = ConsoleColors.PURPLE_BACKGROUND_BRIGHT;
+                break;
+            case 9:
+                color = ConsoleColors.RED_BACKGROUND;
+                break;
+            default:
+                color = ConsoleColors.WHITE_BACKGROUND;
+        }
+        return color;
     }
 }
